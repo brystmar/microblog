@@ -1,5 +1,4 @@
-#!/Users/tberg/Documents/GitHub/microblog/venv/bin/python3
-
+#!/Users/tberg/Documents/Dev/PyCharm/microblog/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

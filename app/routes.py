@@ -1,4 +1,4 @@
-# when connecting from a web browser, show the Breadsheet Central page
+# when connecting from a web browser, show the Hello World page
 from app import app
 
 # map the top-level URL to this function
