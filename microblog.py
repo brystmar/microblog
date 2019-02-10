@@ -1,2 +1,2 @@
-# script for Flask to obtain our application instance, referenced elsewhere
+# script for Flask to obtain our application instance
 from app import app

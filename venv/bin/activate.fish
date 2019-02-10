@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/tberg/Documents/GitHub/microblog/venv"
+set -gx VIRTUAL_ENV "/Users/tberg/Documents/Dev/PyCharm/microblog/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

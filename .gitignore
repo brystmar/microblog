@@ -1,1 +1,15 @@
 .DS_Store
+_mac/
+codestyles/
+colors.scheme.xml
+debugger.xml
+editor.codeinsight.xml
+filetypes.xml
+find.xml
+github.xml
+ide.general.xml
+jdk.table.xml
+markdown.xml
+project.default.xml
+ui.lnf.xml
+updates.xml
