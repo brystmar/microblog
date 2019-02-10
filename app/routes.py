@@ -16,6 +16,7 @@ def index():
     text += '<ul>'
     text += '<li>Country Sourdough: <i>Pain de Campagne</i></li>'
     text += '<li>Overnight Poolish</li>'
+    text += '<li>Saturday White Loaf</li>'
     text += '</ul>'
     text += '</p></div>'
     return text
