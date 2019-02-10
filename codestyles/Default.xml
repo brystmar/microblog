@@ -7,6 +7,7 @@
     <option name="BLANK_LINES_BEFORE_FIRST_METHOD" value="1" />
     <option name="DICT_ALIGNMENT" value="1" />
     <option name="OPTIMIZE_IMPORTS_JOIN_FROM_IMPORTS_WITH_SAME_SOURCE" value="true" />
+    <option name="HANG_CLOSING_BRACKETS" value="true" />
   </Python>
   <codeStyleSettings language="HTML">
     <indentOptions>
