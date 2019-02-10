@@ -1,4 +1,4 @@
-# when connecting from a web browser, show the Breadsheet Central page
+# when connecting from a web browser, show the Hello World page
 from app import app
 
 # map the top-level URL to this function
@@ -16,6 +16,8 @@ def index():
     text += '<ul>'
     text += '<li>Country Sourdough: <i>Pain de Campagne</i></li>'
     text += '<li>Overnight Poolish</li>'
+    text += '<li>Saturday White Loaf</li>'
+    text += '<li>Pizza Dough</li>'
     text += '</ul>'
     text += '</p></div>'
     return text
