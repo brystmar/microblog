@@ -1,6 +1,0 @@
-<application>
-  <component name="NotificationConfiguration">
-    <notification groupId="PyCharm Professional Advertiser" displayType="NONE" shouldLog="false" />
-    <notification groupId="Python Stub Packages Advertiser" displayType="STICKY_BALLOON" />
-  </component>
-</application>
