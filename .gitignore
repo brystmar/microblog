@@ -1,7 +1,9 @@
 .DS_Store
 .idea/
+.git/
 _mac/
 codestyles/
+__pycache__/
 colors.scheme.xml
 debugger.xml
 editor.codeinsight.xml
