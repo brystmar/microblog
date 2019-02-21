@@ -19,7 +19,6 @@ def before_request():
 @app.route('/')  # map the top-level URL to this function
 @app.route('/index')  # also map the /index URL to this same function
 @login_required  # require login to view this page
-# specify what to return
 def index():
     posts = [
         {
@@ -51,7 +50,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         # grab the user's desired page from the querystring
         next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':  # no requested next page, or that URL is suspicious
+        if not next_page or url_parse(next_page).netloc != '':  # no requested next page, or if that URL is suspicious
             next_page = url_for('index')
         return redirect(next_page)  # redirect to this desired page after login
 
