@@ -1,0 +1,22 @@
+<code_scheme name="Default" version="173">
+  <HTMLCodeStyleSettings>
+    <option name="HTML_ALIGN_TEXT" value="true" />
+  </HTMLCodeStyleSettings>
+  <Python>
+    <option name="BLANK_LINES_AROUND_TOP_LEVEL_CLASSES_FUNCTIONS" value="1" />
+    <option name="BLANK_LINES_BEFORE_FIRST_METHOD" value="1" />
+    <option name="DICT_ALIGNMENT" value="1" />
+    <option name="OPTIMIZE_IMPORTS_JOIN_FROM_IMPORTS_WITH_SAME_SOURCE" value="true" />
+  </Python>
+  <codeStyleSettings language="HTML">
+    <indentOptions>
+      <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
+    </indentOptions>
+  </codeStyleSettings>
+  <codeStyleSettings language="Python">
+    <option name="RIGHT_MARGIN" value="160" />
+    <option name="KEEP_BLANK_LINES_IN_DECLARATIONS" value="2" />
+    <option name="KEEP_BLANK_LINES_IN_CODE" value="2" />
+    <option name="WRAP_ON_TYPING" value="0" />
+  </codeStyleSettings>
+</code_scheme>
