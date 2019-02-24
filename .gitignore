@@ -5,6 +5,7 @@ _mac/
 codestyles/
 __pycache__/
 app/creds.py
+logs/
 colors.scheme.xml
 debugger.xml
 editor.codeinsight.xml
