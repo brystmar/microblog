@@ -1,26 +1,20 @@
 {% extends "base.html" %}
 
-{% block content %}
-    <table>
-        <tr valign="top">
-            <td><img src="{{ user.avatar(128) }}"></td>
+{% block app_content %}
+    <table class="table table-hover">
+        <tr>
+            <td width="256px"><img src="{{ user.avatar(200) }}"></td>
             <td>
-                <h1>Profile of {{ user.username }}</h1>
+                <h1>User Profile: {{ user.username }}</h1>
                 {% if user.about_me %}
                     <p>{{ user.about_me }}</p>
                 {% endif %}
-                
                 {% if user.last_seen %}
-                    <p>Last seen {{ user.last_seen }}</p>
+                    <p>Last seen on: {{ user.last_seen }}</p>
                 {% endif %}
-                
-                <p>
-                    Followers: {{ user.followers.count() }}
-                    <br>
-                    Following: {{ user.followed.count() }}
-                </p>
-                
-                <!-- only show the edit profile link if the current user is viewing their own page -->
+                <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
+
+                <!-- only show the edit profile link when a user is viewing their own page -->
                 {% if user == current_user %}
                     <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
                 {% elif not current_user.is_following(user) %}
@@ -31,16 +25,24 @@
             </td>
         </tr>
     </table>
-    <hr>
-    {% for post in posts %}
-        {% include "_post.html" %}
-    {% endfor %}
 
-    {% if prev_url %}
-        <a href="{{ prev_url }}"> <-- Prev</a>
-    {% endif %}
-    {% if next_url %}
-        <a href="{{ next_url }}">Next --></a>
-    {% endif %}
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+    
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> Newer posts
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    Older posts <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
 {% endblock %}

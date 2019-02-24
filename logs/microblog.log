@@ -36,3 +36,63 @@ NameError: name 'send_sync_email' is not defined
 2019-02-23 18:25:09,850 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:57]
 2019-02-23 18:26:38,829 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:57]
 2019-02-23 18:33:40,146 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:56]
+2019-02-23 19:53:08,515 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 19:55:59,132 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:00:51,758 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:08:31,251 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:12:13,157 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:12:53,156 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:12:54,313 ERROR: Exception on /user/susan [GET] [in /Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/app/routes.py", line 113, in user
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/app/templates/base.html", line 52, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/Users/tberg/Documents/Dev/PyCharm/microblog/app/templates/user.html", line 6, in block "app_content"
+    <td width="256px"><img src="{{ user.avatar() }}"></td>
+TypeError: avatar() missing 1 required positional argument: 'size'
+2019-02-23 20:13:03,284 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:13:10,709 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:13:17,097 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:13:25,460 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:13:34,372 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:13:41,388 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
+2019-02-23 20:13:52,172 INFO: Microblog startup [in /Users/tberg/Documents/Dev/PyCharm/microblog/app/__init__.py:58]
