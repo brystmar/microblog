@@ -1,10 +1,12 @@
 # initialization file that defines this package's name as "app"
-import os, logging
+import os
+import logging
 from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_mail import Mail
 from logging.handlers import SMTPHandler, RotatingFileHandler
 
 app = Flask(__name__)
@@ -13,17 +15,22 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
+mail = Mail(app)
 
 # error logging
-if not app.debug:  # don't send emails when in debug mode
+if not app.debug:  # don't send emails when in debug mode.  To use a virtual server instead: python -m smtpd -n -c DebuggingServer localhost:8025
     # specify email details
-    if app.config['MAIL_SERVER'] and 1 == 2:  # ensure there's an email server configured
+    if app.config['MAIL_SERVER']:  # ensure there's an email server configured
         auth = None
+
         if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
             auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
-        secure = None
+
         if app.config['MAIL_USE_TLS']:
             secure = ()
+        else:
+            secure = None
+
         mail_handler = SMTPHandler(
             mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
             fromaddr='no-reply@' + app.config['MAIL_SERVER'],
