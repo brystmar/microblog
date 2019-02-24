@@ -1,25 +1,28 @@
 # initialization file that defines this package's name as "app"
 import os
 import logging
-from flask import Flask
+from flask import Flask, request
 from config import Config
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+from flask_babel import Babel, lazy_gettext as _l
+from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 from flask_mail import Mail
+from flask_migrate import Migrate
 from flask_moment import Moment
-from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
 from logging.handlers import SMTPHandler, RotatingFileHandler
 
 app = Flask(__name__)
 app.config.from_object(Config)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
-mail = Mail(app)
-moment = Moment(app)
+login.login_message = _l('Please log in to access this page.')
+db = SQLAlchemy(app)
+babel = Babel(app)
 bootstrap = Bootstrap(app)
+mail = Mail(app)
+migrate = Migrate(app, db)
+moment = Moment(app)
 
 # error logging
 if not app.debug:  # don't send emails when in debug mode.  To use a virtual server instead: python -m smtpd -n -c DebuggingServer localhost:8025
@@ -58,5 +61,11 @@ if not app.debug:  # don't send emails when in debug mode.  To use a virtual ser
     # set the write level to 'info'
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
 
 from app import routes, models, errors

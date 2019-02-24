@@ -31,3 +31,5 @@ class Config(object):
     # pagination for blog posts
     POSTS_PER_PAGE = 10
 
+    LANGUAGES = ['en', 'es']
+
