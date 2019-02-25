@@ -19,3 +19,4 @@ project.default.xml
 ui.lnf.xml
 updates.xml
 vcs.xml
+messages.pot

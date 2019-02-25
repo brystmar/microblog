@@ -1,4 +1,4 @@
-from app.creds import email_creds
+from app.creds import email_creds, ms_translator
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -32,4 +32,6 @@ class Config(object):
     POSTS_PER_PAGE = 10
 
     LANGUAGES = ['en', 'es']
+
+    MS_TRANSLATOR_KEY = ms_translator.key
 

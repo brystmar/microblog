@@ -6,14 +6,14 @@ from app.models import User
 
 
 class LoginForm(FlaskForm):
-    username = StringField(_l('Username'), validators=[DataRequired()])
+    username = StringField(_l('Username'), validators=[DataRequired()], render_kw={'autofocus': True})
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     remember_me = BooleanField(_l('Remember Me'))
     submit = SubmitField(_l('Sign In'))
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField(_l('Username'), validators=[DataRequired()])
+    username = StringField(_l('Username'), validators=[DataRequired()], render_kw={'autofocus': True})
     email = StringField(_l('Email'), validators=[DataRequired(), Email()])
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     password_confirm = PasswordField(_l('Confirm Password'), validators=[DataRequired(), EqualTo('password')])
@@ -50,17 +50,17 @@ class EditProfileForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    post = TextAreaField(_l('What\'s on your mind?'), validators=[DataRequired(), Length(min=1, max=140)])
+    post = TextAreaField(_l('What\'s on your mind?'), validators=[DataRequired(), Length(min=1, max=140)], render_kw={'autofocus': True})
     submit = SubmitField(_l('Submit'))
 
 
 class ResetPasswordRequestForm(FlaskForm):
-    email = StringField(_l('Email'), validators=[DataRequired(), Email()])
+    email = StringField(_l('Email'), validators=[DataRequired(), Email()], render_kw={'autofocus': True})
     submit = SubmitField(_l('Request Password Reset'))
 
 
 class ResetPasswordForm(FlaskForm):
-    password = PasswordField(_l('Password'), validators=[DataRequired()])
+    password = PasswordField(_l('Password'), validators=[DataRequired()], render_kw={'autofocus': True})
     password_confirm = PasswordField(_l('Confirm Password'), validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField(_l('Reset Password'))
 

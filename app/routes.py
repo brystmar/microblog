@@ -1,7 +1,9 @@
 # determines which page(s) to show for each browser request
-from flask import render_template, flash, redirect, url_for, request, g
+import json
+from flask import render_template, flash, redirect, url_for, request, g, jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_babel import _, get_locale
+from guess_language import guess_language
 from werkzeug.urls import url_parse
 from datetime import datetime
 
@@ -9,6 +11,7 @@ from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User, Post
 from app.email import send_password_reset_email
+from app.translate import translate
 
 
 @app.before_request
@@ -26,7 +29,11 @@ def index():
     form = PostForm()
 
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
+        language = guess_language(form.post.data)
+        if language == 'UNKNOWN' or len(language) > 5:
+            language = ''
+
+        post = Post(body=form.post.data, author=current_user, language=language)
         db.session.add(post)
         db.session.commit()
         flash(_('Post created!'))
@@ -38,8 +45,7 @@ def index():
     prev_url = url_for('index', page=posts.prev_num) if posts.has_prev else None
     next_url = url_for('index', page=posts.next_num) if posts.has_next else None
 
-    return render_template('index.html', title=_('Home'), form=form, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+    return render_template('index.html', title=_('Home'), form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
 
 
 @app.route('/explore')
@@ -207,3 +213,8 @@ def reset_password(token):
 
     return render_template('reset_password.html', form=form)
 
+
+@app.route('/translate', methods=['GET', 'POST'])
+def translate_text():
+    result = translate(request.form['text'], request.form['source_language'], request.form['dest_language'])
+    return jsonify({'text': result})
