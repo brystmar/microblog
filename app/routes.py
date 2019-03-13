@@ -45,7 +45,8 @@ def index():
     prev_url = url_for('index', page=posts.prev_num) if posts.has_prev else None
     next_url = url_for('index', page=posts.next_num) if posts.has_next else None
 
-    return render_template('index.html', title=_('Home'), form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
+    return render_template('index.html', title=_('Home'), form=form, posts=posts.items,
+                           next_url=next_url, prev_url=prev_url)
 
 
 @app.route('/explore')
@@ -57,7 +58,8 @@ def explore():
     prev_url = url_for('index', page=posts.prev_num) if posts.has_prev else None
     next_url = url_for('index', page=posts.next_num) if posts.has_next else None
 
-    return render_template('index.html', title=_('Explore'), posts=posts.items, next_url=next_url, prev_url=prev_url)
+    return render_template('index.html', title=_('Explore'), posts=posts.items,
+                           next_url=next_url, prev_url=prev_url)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -113,8 +115,7 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()  # if user isn't found, return a 404 error
 
     page = request.args.get('page', 1, type=int)
-    posts = user.posts.order_by(Post.timestamp.desc()).paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
+    posts = user.posts.order_by(Post.timestamp.desc()).paginate(page, app.config['POSTS_PER_PAGE'], False)
     prev_url = url_for('user', username=user.username, page=posts.prev_num) if posts.has_prev else None
     next_url = url_for('user', username=user.username, page=posts.next_num) if posts.has_next else None
 
