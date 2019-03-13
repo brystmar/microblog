@@ -6,7 +6,7 @@ codestyles/
 __pycache__/
 app/creds.py
 logs/
-# venv/
+venv/
 colors.scheme.xml
 debugger.xml
 editor.codeinsight.xml
@@ -137,16 +137,15 @@ fabric.properties
 ### venv ###
 # Virtualenv
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-# ADDING STUFF BELOW THIS LINE
-# .Python
-# [Bb]in
-# [Ii]nclude
-# [Ll]ib
-# [Ll]ib64
-# [Ll]ocal
-# [Ss]cripts
-# pyvenv.cfg
-# .venv
-# pip-selfcheck.json
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
 
 # End of https://www.gitignore.io/api/venv,macos,pycharm
