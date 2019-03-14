@@ -6,6 +6,7 @@ codestyles/
 __pycache__/
 app/creds.py
 logs/
+microblog-web/
 venv/
 colors.scheme.xml
 debugger.xml
@@ -21,7 +22,7 @@ ui.lnf.xml
 updates.xml
 vcs.xml
 messages.pot
-
+.env
 
 
 # Created by https://www.gitignore.io/api/venv,macos,pycharm
@@ -149,4 +150,3 @@ pyvenv.cfg
 pip-selfcheck.json
 
 # End of https://www.gitignore.io/api/venv,macos,pycharm
-#

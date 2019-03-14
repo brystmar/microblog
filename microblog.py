@@ -1,6 +1,9 @@
 # script for Flask to obtain our application instance
-from app import app, db, cli
+from app import create_app, db, cli
 from app.models import User, Post
+
+app = create_app()
+cli.register(app)
 
 
 @app.shell_context_processor

@@ -1,6 +1,9 @@
 from app.creds import email_creds, ms_translator
+from dotenv import load_dotenv
 import os
+
 basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
 
 
 class Config(object):
@@ -14,24 +17,20 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # email server config.  For virtual server: python -m smtpd -n -c DebuggingServer localhost:8025
-    MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.gmail.com'
-    ADMINS = [email_creds.email]  # ['my@email.com']
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')  # or 'smtp.gmail.com'
+    # ADMINS = [email_creds.email]  # ['my@email.com']
 
-    if MAIL_SERVER == 'smtp.gmail.com':
-        MAIL_PORT = 587  # SSL port
-        MAIL_USE_TLS = 1
-        MAIL_USERNAME = email_creds.username
-        MAIL_PASSWORD = email_creds.password
-    else:
+    MAIL_PORT = int(os.environ.get('MAIL_PORT')) or 25  # default port for non-SSL email
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    ADMINS = os.environ.get('ADMINS')
+
+    if MAIL_SERVER != 'smtp.gmail.com':
         MAIL_PORT = int(os.environ.get('MAIL_PORT')) or 25  # default port for non-SSL email
         MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
-        MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-        MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
-    # pagination for blog posts
+    # pagination setting for blog posts
     POSTS_PER_PAGE = 10
 
     LANGUAGES = ['en', 'es']
-
-    MS_TRANSLATOR_KEY = ms_translator.key
-
