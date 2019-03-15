@@ -27,3 +27,18 @@ class PostForm(FlaskForm):
     post = TextAreaField(_l('What\'s on your mind?'), validators=[DataRequired(), Length(min=1, max=140)],
                          render_kw={'autofocus': True})
     submit = SubmitField(_l('Submit'))
+
+
+class SearchForm(FlaskForm):
+    q = StringField(_l('Search'), validators=[DataRequired()])
+
+    def __init__(self, *args, **kwargs):
+        if 'formdata' not in kwargs:
+            kwargs['formdata'] = request.args
+
+        # no need for hidden field token validation since this search can't change anything on the server
+        if 'csrf_enabled' not in kwargs:
+            kwargs['csrf_enabled'] = False
+
+        # constructor for the parent class
+        super(SearchForm, self).__init__(*args, **kwargs)

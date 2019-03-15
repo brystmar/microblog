@@ -7,22 +7,27 @@ from guess_language import guess_language
 
 from app import db
 from app.main import bp
-from app.main.forms import EditProfileForm, PostForm
+from app.main.forms import EditProfileForm, PostForm, SearchForm
 from app.models import User, Post
 from app.translate import translate
 
 
-@bp.before_request
+@bp.before_app_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+        g.search_form = SearchForm()
     g.locale = str(get_locale())
+
+    # index all existing posts, if necessary
+    if len(current_app.elasticsearch.indices.get_alias().keys()) < 1:
+        Post.reindex()
 
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])  # also map the /index URL to this same function
-@login_required  # require login to view this page
+@login_required  # require login to view the pages routed to this function
 def index():
     form = PostForm()
 
@@ -133,3 +138,20 @@ def unfollow(username):
 def translate_text():
     result = translate(request.form['text'], request.form['source_language'], request.form['dest_language'])
     return jsonify({'text': result})
+
+
+@bp.route('/search')
+@login_required
+def search():
+    if not g.search_form.validate():
+        return redirect(url_for('main.explore'))
+
+    ppp = current_app.config['POSTS_PER_PAGE']
+    page = request.args.get('page', 1, type=int)
+    q = g.search_form.q.data  # search term
+    posts, total = Post.search(q, page, ppp)
+
+    next_url = url_for('main.search', q=q, page=page+1) if total > page * ppp else None
+    prev_url = url_for('main.search', q=q, page=page-1) if total > 1 else None
+
+    return render_template('search.html', title=_('Search'), posts=posts, next_url=next_url, prev_url=prev_url, q=q)

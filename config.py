@@ -18,13 +18,12 @@ class Config(object):
 
     # email server config.  For virtual server: python -m smtpd -n -c DebuggingServer localhost:8025
     MAIL_SERVER = os.environ.get('MAIL_SERVER')  # or 'smtp.gmail.com'
-    # ADMINS = [email_creds.email]  # ['my@email.com']
 
     MAIL_PORT = int(os.environ.get('MAIL_PORT')) or 25  # default port for non-SSL email
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = os.environ.get('ADMINS')
+    ADMINS = [os.environ.get('ADMINS')]
 
     if MAIL_SERVER != 'smtp.gmail.com':
         MAIL_PORT = int(os.environ.get('MAIL_PORT')) or 25  # default port for non-SSL email
@@ -32,5 +31,9 @@ class Config(object):
 
     # pagination setting for blog posts
     POSTS_PER_PAGE = 10
+
+    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
+
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
 
     LANGUAGES = ['en', 'es']

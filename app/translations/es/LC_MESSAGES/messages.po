@@ -24,11 +24,11 @@ msgstr "Por favor ingrese para acceder a esta página."
 
 #: app/translate.py:13
 msgid "Error: Translation service is not configured."
-msgstr ""
+msgstr "Error: El servicio de traducción no está configurado."
 
 #: app/translate.py:25
 msgid "Error: Translation service failed. "
-msgstr ""
+msgstr "Error: El servicio de traducción falló. "
 
 #: app/auth/email.py:8
 msgid "[Microblog] Reset Your Password"
@@ -158,27 +158,27 @@ msgstr "%(username)s %(when)s"
 
 #: app/templates/_post.html:22
 msgid "Translate"
-msgstr ""
+msgstr "Traducir"
 
 #: app/templates/base.html:7
 msgid "No title provided"
-msgstr ""
+msgstr "No se proporciona título"
 
 #: app/templates/base.html:21
 msgid "Login"
-msgstr ""
+msgstr "Ingresar"
 
 #: app/templates/base.html:24
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: app/templates/base.html:25
 msgid "Logout"
-msgstr ""
+msgstr "Salir"
 
 #: app/templates/base.html:61
 msgid "Error: Could not contact server."
-msgstr ""
+msgstr "Error: No se pudo contactar con el servidor"
 
 #: app/templates/index.html:5
 #, python-format
@@ -257,16 +257,4 @@ msgstr "El administrador ha sido notificado."
 
 #~ msgid "No title provided"
 #~ msgstr "Bienvenido a Microblog"
-
-#~ msgid "Login"
-#~ msgstr "Ingresar"
-
-#~ msgid "Profile"
-#~ msgstr "Perfil"
-
-#~ msgid "Logout"
-#~ msgstr "Salir"
-
-#~ msgid "Error: Translation service failed."
-#~ msgstr ""
 
