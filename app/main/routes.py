@@ -21,8 +21,9 @@ def before_request():
     g.locale = str(get_locale())
 
     # index all existing posts, if necessary
-    if len(current_app.elasticsearch.indices.get_alias().keys()) < 1:
-        Post.reindex()
+    if current_app.elasticsearch:  # is elasticsearch running/enabled?
+        if len(current_app.elasticsearch.indices.get_alias().keys()) < 1:
+            Post.reindex()
 
 
 @bp.route('/', methods=['GET', 'POST'])
