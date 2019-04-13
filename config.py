@@ -1,4 +1,4 @@
-from app.creds import email_creds, ms_translator
+# from app.creds import email_creds, ms_translator
 from dotenv import load_dotenv
 import os
 
@@ -29,11 +29,8 @@ class Config(object):
         MAIL_PORT = int(os.environ.get('MAIL_PORT')) or 25  # default port for non-SSL email
         MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
 
-    # pagination setting for blog posts
     POSTS_PER_PAGE = 10
-
-    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
-
-    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
-
     LANGUAGES = ['en', 'es']
+
+    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY') or None
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL') or None

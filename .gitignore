@@ -5,6 +5,7 @@ _mac/
 codestyles/
 __pycache__/
 app/creds.py
+**/creds.py
 logs/
 microblog-web/
 venv/
